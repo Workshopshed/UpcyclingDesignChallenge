@@ -29,14 +29,14 @@ module body() {
           {
           translate([1.6,0,3])
             sphere(r=rad);
-          translate([0,-2,0.9])
+          translate([0,-2,1.3])
               rotate([0,90,0])
                  cylinder(r=rad,h=3,center=true);
           cube([3,3,3],center=true);
           cube([3,3,3],center=true);
           translate([1.6,0,-3])
             sphere(r=rad);
-          translate([0,-2,-0.6])
+          translate([0,-2,-1.3])
               rotate([0,90,0])
                  cylinder(r=rad,h=3,center=true);
           cube([3,3,3],center=true);
@@ -71,10 +71,10 @@ difference(){
             translate([0,0,-2.3])
                 led();
         //Screw holes
-        translate([0,7,0])
-            cylinder(d=2.2,h=20);
-        translate([0,-7,0])
-            cylinder(d=2.2,h=20);
+        translate([0,7,-3.5])
+            cylinder(d=2.2,h=10);
+        translate([0,-7,-3.5])
+            cylinder(d=2.2,h=10);
         }
 }
 
