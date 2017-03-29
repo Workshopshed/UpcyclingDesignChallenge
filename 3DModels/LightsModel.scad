@@ -1,5 +1,5 @@
 offset = 0.25;
-$fn=50;
+$fn=30;
 
 module forCuboid(offsetx,offsety,offsetz) {
    
@@ -24,28 +24,29 @@ module forCuboid(offsetx,offsety,offsetz) {
 module body() {
     union() {
     hull() {
-        forCuboid(8,3,6)
+        rad=3;
+        forCuboid(8,1,6)
           {
           translate([1.6,0,3])
-            sphere(r=4);
-          translate([0,-2.1,2])
+            sphere(r=rad);
+          translate([0,-2,0.9])
               rotate([0,90,0])
-                 cylinder(d=8,h=4,center=true);
-          cube([4,4,5],center=true);
-          cube([4,4,5],center=true);
+                 cylinder(r=rad,h=3,center=true);
+          cube([3,3,3],center=true);
+          cube([3,3,3],center=true);
           translate([1.6,0,-3])
-            sphere(r=4);
-          translate([0,-2,-2])
+            sphere(r=rad);
+          translate([0,-2,-0.6])
               rotate([0,90,0])
-                 cylinder(d=8,h=4,center=true);
-          cube([4,4,4],center=true);
-          cube([4,4,4],center=true);
+                 cylinder(r=rad,h=3,center=true);
+          cube([3,3,3],center=true);
+          cube([3,3,3],center=true);
         }
     }
     //Front diffuser
       rotate([0,0,-12])
-      translate([-33,-6.5,-6])
-      for (x = [13:20])
+      translate([-32,-3.5,-6])
+      for (x = [13:19])
           for (z = [1:5])
           {
               translate([x*2.1,0,z*2])
@@ -67,7 +68,7 @@ difference(){
         color("OrangeRed")
             body();
         rotate([0,90,90]) {
-            translate([0,0,-5])
+            translate([0,0,-2.3])
                 led();
         //Screw holes
         translate([0,7,0])
