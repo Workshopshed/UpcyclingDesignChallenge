@@ -58,7 +58,7 @@ module body() {
 
 module led() {
     cylinder(d=5+offset,h=50);
-    translate([0,0,7])
+    translate([0,0,3])
         cylinder(d=7,h=25);
     sphere(d=5+offset);
 }
@@ -68,14 +68,19 @@ difference(){
         color("OrangeRed")
             body();
         rotate([0,90,90]) {
-            translate([0,0,-2.3])
+            translate([0,0,-1.8])
                 led();
         //Screw holes
-        translate([0,7,-3.5])
-            cylinder(d=2.2,h=10);
+        translate([0,7,-3])
+            cylinder(d=2.5,h=10);
         translate([0,-7,-3.5])
-            cylinder(d=2.2,h=10);
+            cylinder(d=2.5,h=10);
         }
+        //Tiny slits to form internal walls
+        translate([6.8,-4.5,-7])
+            cube([0.5,10,14]);
+        translate([-7.2,-1.5,-7])
+            cube([0.5,6,14]);
 }
 
 
