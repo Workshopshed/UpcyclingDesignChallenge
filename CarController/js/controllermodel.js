@@ -16,23 +16,39 @@ function upCycleController() {
       self.log.push("Disconnected");
       self.machines.removeAll();
   }
+  self.newMessage = function(action,timeout) {
+       return new Paho.MQTT.Message(JSON.stringify({ action: action, timeOut: timeout}));
+  }
+
   self.left = function () {
-      message = new Paho.MQTT.Message("LEFT");
+      message = this.newMessage("LEFT",1000);
       message.destinationName = self.Qcommands;
       self.client.send(message);
   }
   self.right = function () {
-      message = new Paho.MQTT.Message("RIGHT");
+      message = this.newMessage("RIGHT",1000);
       message.destinationName = self.Qcommands;
       self.client.send(message);
   }
   self.up = function () {
-      message = new Paho.MQTT.Message("UP");
+      message = this.newMessage("UP",1000);
       message.destinationName = self.Qcommands;
       self.client.send(message);
   }
   self.down = function () {
-      message = new Paho.MQTT.Message("DOWN");
+      message = this.newMessage("DOWN",1000);
+      message.destinationName = self.Qcommands;
+      self.client.send(message);
+  }
+
+  self.run = function () {
+      message = this.newMessage("RUN",1);
+      message.destinationName = self.Qcommands;
+      self.client.send(message);
+  }
+
+  self.halt = function () {
+      message = this.newMessage("HALT",1);
       message.destinationName = self.Qcommands;
       self.client.send(message);
   }
@@ -42,7 +58,7 @@ function upCycleController() {
   }
 
   // Create a client instance
-  self.client = new Paho.MQTT.Client("ws://localhost:1884", self.clientID());
+  self.client = new Paho.MQTT.Client("localhost",1884, self.clientID());
 
 // set callback handlers
   self.client.onConnectionLost = function (responseObject) {
