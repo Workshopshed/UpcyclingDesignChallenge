@@ -2,7 +2,8 @@
 
 // Listens for messages on a queue and responds
 
-var mqtt = require('mqtt')
+var mqtt = require('mqtt');
+var controller = require('./carController.js')
 
 console.log('Starting Car Listener')
 
@@ -15,24 +16,19 @@ client.on('connect', function () {
 })
 
 client.on('message', function (topic, message) {
-
-    if (topic == 'CAR') {
-    	if (message == 'FWD') {
-		console.log('Moving Forward')
-    }
-    console.log(message.toString())
-    }
+    var command = JSON.parse(message.toString());
+    controller.addMovement(command);
+    console.log(message.toString());
 })
 
 process.on('SIGINT', function () {
     console.log("Shutting down SIGINT (Ctrl-C)");
-    // some other closing procedures go here
+    controller.shutdown();
     client.end()
     process.exit();
 })
 
 function doStuff() {
-    // code to run
     console.log("Heartbeat...");
 };
 
