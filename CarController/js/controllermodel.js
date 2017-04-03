@@ -17,44 +17,41 @@ function upCycleController() {
       self.machines.removeAll();
   }
   self.newMessage = function(action,timeout) {
-       return new Paho.MQTT.Message(JSON.stringify({ action: action, timeOut: timeout}));
+       var message = new Paho.MQTT.Message(JSON.stringify({ action: action, timeOut: timeout}));
+       message.destinationName = self.Qcommands;
+       return message;
   }
 
   self.left = function () {
       message = this.newMessage("LEFT",1000);
-      message.destinationName = self.Qcommands;
       self.client.send(message);
   }
   self.right = function () {
       message = this.newMessage("RIGHT",1000);
-      message.destinationName = self.Qcommands;
       self.client.send(message);
   }
   self.up = function () {
       message = this.newMessage("UP",1000);
-      message.destinationName = self.Qcommands;
       self.client.send(message);
   }
   self.down = function () {
       message = this.newMessage("DOWN",1000);
-      message.destinationName = self.Qcommands;
       self.client.send(message);
   }
 
   self.run = function () {
       message = this.newMessage("RUN",1);
-      message.destinationName = self.Qcommands;
       self.client.send(message);
   }
 
   self.halt = function () {
       message = this.newMessage("HALT",1);
-      message.destinationName = self.Qcommands;
       self.client.send(message);
   }
 
   self.setstatus = function (status, retained) {
       self.status.status = status;
+      self.log.push("Status: " + status);
   }
 
   // Create a client instance
@@ -76,19 +73,15 @@ function upCycleController() {
       return -1;
   }
 
-    //This bit would be hosted in the Node.JS service on the board.
-      self.client.onMessageArrived = function (message) {
+  self.client.onMessageArrived = function (message) {
           self.log.push(message.destinationName);
           self.log.push(message.payloadString);
          };
 
-// called when the client connects
   self.onConnect = function() {
-      // Once a connection has been made, make a subscription and send a message.
       self.setstatus("Connected");
-    self.log.push("Connected");
-    // Note that a machine would just connect to run and a monitor would just connect to status.
-    self.client.subscribe("E14_UCDC/+/Commands");
+      //Listen to self for logging reasons
+      self.client.subscribe("E14_UCDC/+/Commands");
   }
 
 }
