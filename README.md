@@ -2,7 +2,6 @@
 
 ## Overview
 
-
 This demo project is remote control the vehicle
 
 ## Components
@@ -11,6 +10,7 @@ This demo project is remote control the vehicle
 
 * Knockout - To bind the data to the controls on the page
 
-* Socket.IO - To communicate with the 
+* Socket.IO - To communicate with the server
 
-Note that the menus don't do anything either.
+* Paho.MQTT - MQTT client
+
