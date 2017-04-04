@@ -9,13 +9,21 @@ function upCycleController() {
 
   //Buttons
   self.connect = function() {
-    self.client.connect({onSuccess:self.onConnect});}
+    self.client.connect({useSSL:true,onSuccess:self.onConnect, onFailure:self.onConnectFail});}
   self.disconnect = function () {
       self.setstatus("disconnected", true);
       self.client.disconnect();
       self.log.push("Disconnected");
       self.machines.removeAll();
   }
+
+ self.onConnectFail = function(invocationContext,errorCode,errorMessage) {
+       console.log(errorCode);
+      console.log(errorMessage);
+      console.log(invocationContext);
+
+  }
+
   self.newMessage = function(action,timeout) {
        var message = new Paho.MQTT.Message(JSON.stringify({ action: action, timeOut: timeout}));
        message.destinationName = self.Qcommands;
