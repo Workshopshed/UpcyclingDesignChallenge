@@ -1,1 +1,1 @@
-mosca -v --http-port 1884 --only-http  
+mosca --v --https-port 1884 --only-http --cert TestCertificate.pem --key TestCertificate.pem
