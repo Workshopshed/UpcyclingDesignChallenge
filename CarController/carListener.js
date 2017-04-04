@@ -3,16 +3,32 @@
 // Listens for messages on a queue and responds
 
 var mqtt = require('mqtt');
-var controller = require('./carController.js')
 
-console.log('Starting Car Listener')
+var controller = require('./carController.js');
 
-console.log('Connecting to Queue')
+console.log('Starting Car Listener');
 
-var client = mqtt.connect('ws://localhost:1884');
+console.log('Connecting to Queue');
+
+var options = {
+  port:1884,
+  rejectUnauthorized: false,
+  protocol: 'wss'
+}
+
+var client = mqtt.connect('mqtts://localhost', options);
 
 client.on('connect', function () {
+    console.log('Connected');
     client.subscribe('E14_UCDC/+/Commands')
+})
+
+client.on('error', function (errMess) {
+    console.log(errMess);
+})
+
+client.on('close', function () {
+    console.log('Closed');
 })
 
 client.on('message', function (topic, message) {
