@@ -3,13 +3,17 @@
 function upCycleController() {
     self = this;
     self.clientID = ko.observable("upCycleController" + parseInt(Math.random() * 100, 10));
+    self.server = '192.168.1.145';
+    self.port = 1884;
     self.log = ko.observableArray();
     self.status = { name: ko.observable(self.clientID), status: ko.observable("ready") };
     self.Qcommands = "E14_UCDC/" + self.clientID() + "/Commands";
 
   //Buttons
-  self.connect = function() {
-    self.client.connect({useSSL:true,onSuccess:self.onConnect, onFailure:self.onConnectFail});}
+  self.connect = function() { self.client.connect( 
+	 {useSSL:true, onSuccess:self.onConnect, onFailure:self.onConnectFail}
+	);}
+
   self.disconnect = function () {
       self.setstatus("disconnected", true);
       self.client.disconnect();
@@ -63,7 +67,7 @@ function upCycleController() {
   }
 
   // Create a client instance
-  self.client = new Paho.MQTT.Client("localhost",1884, self.clientID());
+  self.client = new Paho.MQTT.Client(self.server,self.port, self.clientID());
 
 // set callback handlers
   self.client.onConnectionLost = function (responseObject) {
