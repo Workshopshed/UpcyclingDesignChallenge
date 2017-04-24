@@ -9,10 +9,10 @@ Not using TX and RX so can use pin 0 and 1 for the lights
 * Indicator L - Pin 3
 * Indicator R - Pin 4
 
-#Motor
+# Motor
 * Motor Spped - Pin 5
 * Motor 1 Direction - Pin 6,7
 * Motor 2 Direction - Pin 7,8
 
-#Bumpers
+# Bumpers
 * A0
