@@ -1,20 +1,14 @@
+Using a Grove shield for most of the connections but not all of the digital pins are broken out.
 
-![alt text](http://url/to/img.png)
+![alt text](Shield.jpg)
 
+Not using TX and RX so can use pin 1 and 2 for the lights
 
+Indicator L - Pin 0
+Indicator R - Pin 1
+Headlights - Pin 2
+Brakes  lights - Pin 3
 
-![alt text](http://url/to/img.png)https://statics3.seeedstudio.com/seeed/img/2016-08/OPzl1QYRSz4TxporQi0OtuA0.jpg
-
-
-Motor 1 - 2
-Motor 2 - 2
-Motor Speed 1?
-Brakes  lights - 1
-Indicators - 2
-Headlights - 1
-I/O needed - 9
-
-D2-> D9 = 7
-I/O 10-13 available on the Arduino pins
-
-Leaves 2 spare.
+Motor Spped - Pin 5
+Motor 1 Direction - Pin 6,7
+Motor 2 Direction - Pin 7,8
