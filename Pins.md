@@ -17,7 +17,7 @@ Not using TX and RX so can use pin 0 and 1 for the lights, need pins that are sh
 # Bumpers
 * Bumpers A0 and A1 (split front and back), resistor ladder to be used to allow left and right switches to be independently detected.
 
-# Ambiant Light Sensor
+# Ambient Light Sensor
 * Light Sensor - Pin A2
 
 # Cables (10 needed)
