@@ -1,24 +1,24 @@
-Using a Grove shield for most of the connections but not all of the digital pins are broken out.
+Using a Grove shield from the provided kit. The Grove connectors are good for the car in that they are firmly attached it also saves a custom wiring harness being made.
 ![alt text](Shield.jpg)
 
-Not using TX and RX so can use pin 0 and 1 for the lights
+Not using TX and RX so can use pin 0 and 1 for the lights, need pins that are shared to run the indicator hence the choice of 3 and 4. Need pins with PWM for the headlights and motor.
 
 # Lights
-* Headlights - Pin 1
-* Brakes  lights - Pin 2
+* Brake lights - Pin 1
+* Headlights - Pin 5 (PWM)
 * Indicator L - Pin 3
 * Indicator R - Pin 4
 
 # Motor
-* Motor Spped - Pin 5
-* Motor 1 Direction - Pin 6,7
-* Motor 2 Direction - Pin 8,9
+* Motor Speed - Pin 6 (PWM)
+* Motor 1 Direction - Pin 7,8
+* Motor 2 Direction - Pin A2, A3
 
 # Bumpers
-* A0
+* Bumpers A0 and A1 (split front and back), resistor ladder to be used to allow left and right switches to be independently detected.
 
-# Cables (8 needed)
-* Front Lights - UART, D4
-* Rear Lights - D2, D3
-* Motor - D5, D6, D8
-* Bumpers - A0
+# Cables (9 needed)
+* Front Lights - D2, D4
+* Rear Lights - D3, UART
+* Motor - D6, D7, A2
+* Bumpers - A0, A1
