@@ -17,7 +17,6 @@ setInterval(function () {
     var analogValueFloat = analogPin0.readFloat();
     var newval = floatToSwitch(analogValueFloat)
     if (newval != previous) {
-        // Fire the connection event 
         eventEmitter.emit('bumper',newval);
         previous = newval;
     }
