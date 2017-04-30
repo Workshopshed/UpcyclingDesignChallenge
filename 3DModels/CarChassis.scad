@@ -48,12 +48,12 @@ module Chassis() {
         rotate([0,0,70])
             cube([10,40,10]);
     //Front Buffers
-    translate([60,51.92,0])
+    translate([60,52.92,0])
         rotate([0,0,90])
-            cube([15,30,10]);
+            cube([14,20,10]);
     translate([60,12.92,0])
         rotate([0,0,90])
-            cube([15,30,10]);
+            cube([14,20,10]);
     //Back
     translate([-110,10,0])
         cube([15,60,10]);
@@ -64,12 +64,12 @@ module Chassis() {
         rotate([0,0,-82])
             cube([10,32,10]);
     //Back Buffers
-    translate([-110,51.92,0])
+    translate([-110,56.92,0])
         rotate([0,0,90])
-            cube([15,10,10]);
+            cube([10,10,10]);
     translate([-110,12.92,0])
         rotate([0,0,90])
-            cube([15,10,10]);
+            cube([10,10,10]);
 	}
 }
 
@@ -93,7 +93,7 @@ module mountingholes() {
 
 module buffers() {
 	w1 = 40;
-	w2 = 40;
+	w2 = 44;
 	translate([90,w1/2,5])
 		bufferlarge();
 	translate([90,-w1/2,5])
@@ -106,7 +106,7 @@ module buffers() {
 
 module bufferholes() {
 	w1 = 40;
-	w2 = 40;
+	w2 = 44;
 	translate([90,w1/2,5])
 		rotate([0,90,0]) {
 			translate([0.25,0,-25])
