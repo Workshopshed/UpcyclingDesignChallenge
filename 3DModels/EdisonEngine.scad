@@ -23,24 +23,21 @@ module Base() {
 			}
 			//Tabs
 			cube([9,11,3]);
-			translate([24,32,0])
-				cube([8,10,3]);
+			translate([24,33,0])
+				cube([8,9,3]);
 		}
 		//Holes
 		translate([6,7,0])
-			cylinder(d=2.5,h=10,$fn=50);
+			cylinder(d=3.5,h=10,$fn=50);
 		
-		translate([33-2,43-5,0])
-			cylinder(d=2.5,h=10,$fn=50);	
+		translate([33-6,43-7,0])
+			cylinder(d=3.5,h=10,$fn=50);	
 	}
 }
 
 module Manifold() {
 	union() {
 		Base();
-		translate([33,5,6.5])
-			rotate([90,90,0])
-				Exhaust();
 		translate([33,11,6.5])
 			rotate([90,90,0])
 				Exhaust();
@@ -50,8 +47,8 @@ module Manifold() {
 		translate([33,23,6.5])
 			rotate([90,90,0])
 				Exhaust();
-		translate([0,5,6.5])
-			rotate([-90,90,0])
+		translate([33,30,6.5])
+			rotate([90,90,0])
 				Exhaust();
 		translate([0,11,6.5])
 			rotate([-90,90,0])
@@ -60,6 +57,9 @@ module Manifold() {
 			rotate([-90,90,0])
 				Exhaust();
 		translate([0,23,6.5])
+			rotate([-90,90,0])
+				Exhaust();
+		translate([0,30,6.5])
 			rotate([-90,90,0])
 				Exhaust();
 	}
