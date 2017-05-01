@@ -62,6 +62,20 @@ module Manifold() {
 		translate([0,30,6.5])
 			rotate([-90,90,0])
 				Exhaust();
+        //Supports
+        translate([-5,10,7])      
+            cube([0.5,19,0.5]);
+        translate([-9,10,15])      
+            cube([0.5,19,0.5]);               
+        translate([-13,10,25])      
+            cube([0.5,19,0.5]);  
+            
+        translate([38,10,7])      
+            cube([0.5,19,0.5]);
+        translate([41,10,15])      
+            cube([0.5,19,0.5]);               
+        translate([45,10,25])      
+            cube([0.5,19,0.5]);     
 	}
 }
 
