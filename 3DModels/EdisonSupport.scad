@@ -124,6 +124,28 @@ module GasTank() {
 			cylinder(h=12,d=5,$fn=60);
 }
 
+module TankCutout() {
+    spheres = 2.5;
+    hull() {
+	sphere(d=spheres,$fn=60);
+	translate([42,0,0])
+		sphere(d=spheres,$fn=60);
+	translate([42,25,0])
+		sphere(d=spheres,$fn=60);	
+	translate([0,25,0])
+		sphere(d=spheres,$fn=60);	
+	translate([20,0,6])	
+		sphere(d=spheres,$fn=60);
+	translate([22,0,6])
+		sphere(d=spheres,$fn=60);
+	translate([22,25,6])
+		sphere(d=spheres,$fn=60);	
+	translate([20,25,6])
+		sphere(d=spheres,$fn=60);	
+	}
+    
+}
+
 module Base() {
 	cube([30,20,3]);
 	translate([-4,-5,0])	
@@ -152,7 +174,7 @@ union() {
 Supports();
 //cube([122.3,72,6]);
 translate([40,44,11])
-	exhaust(); //Todo slice a flat on the bottom
+	exhaust(); 
 translate([0,0,6])
 	battery();
 translate([106.6,11.9,6])
@@ -169,6 +191,15 @@ translate([45,20,6])
 }
 translate([0,0,15])
 	Holes();
+//Flatten the bottom
 translate([-13,-9,0])
 	cube([140,90,7]);
+//Cutouts for faster printing
+    translate([106.6,11.9,5])
+        cylinder(h=10,d1=30,d2=10,$fn=30); 
+    translate([77,45,6])
+        TankCutout();
+    translate([4,5,6])
+        TankCutout();
+
 }
