@@ -81,8 +81,8 @@ module mountingholes() {
 	{
 		translate(a) {
 			cylinder(h=15,d=3,$fn=30);
-			cylinder(h=3,d=8,$fn=30);
-			translate([0,0,3])
+			cylinder(h=4,d=8,$fn=30);
+			translate([0,0,4])
 			cylinder(h=3,d1=8,d2=3,$fn=30);
 			translate([0,0,10])
 				cylinder(h=4,d=8,$fn=30);
@@ -141,6 +141,23 @@ module bufferlarge() {
 			}
 }
 
+module cutouts() {
+	translate([42,-30,-2])
+		cube([6,60,9]);
+    translate([-38,-30,-2])
+        cube([6,60,9]);
+	translate([-68,-10,-2])
+        cube([11,20,10]);
+	translate([72,-9,-2])
+        cube([11,18,10]);
+	translate([-76.4,-35.3,-2])
+		rotate([0,0,-35])
+			cube([20,10,15]);
+	translate([-70.4,26.9,-2])
+		rotate([0,0,35])
+			cube([20,10,15]);	
+}
+
 /*
 rotate([0,0,90])
     Edison();
@@ -153,4 +170,5 @@ difference(){
 	}
 	mountingholes();
 	bufferholes();
+	cutouts();
 }
