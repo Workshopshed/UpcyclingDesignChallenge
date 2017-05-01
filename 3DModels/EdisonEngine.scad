@@ -18,8 +18,8 @@ module Base() {
 		union() {
 			difference() {
 				cube([33,43,3]);
-				translate([4+(gap/2),4+(gap/2),-1])
-					cube([25-gap,35-gap,5]);	
+				translate([3.5+(gap/2),4.5+(gap/2),-1])
+					cube([25+gap,35+gap,5]);	
 			}
 			//Tabs
 			cube([9,11,3]);
@@ -27,10 +27,10 @@ module Base() {
 				cube([8,9,3]);
 		}
 		//Holes
-		translate([6,7,0])
+		translate([6,7,-1])
 			cylinder(d=3.5,h=10,$fn=50);
 		
-		translate([33-6,43-7,0])
+		translate([33-6,43-7,-1])
 			cylinder(d=3.5,h=10,$fn=50);	
 	}
 }
