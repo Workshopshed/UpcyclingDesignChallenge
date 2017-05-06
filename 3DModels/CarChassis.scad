@@ -29,47 +29,48 @@ module Edison()
 module Chassis() {
 	translate([40,-40,0]) {
     //Central core
-    cube([10,80,10]);
-    translate([10,0,0])
+    translate([0,5,0])
+        cube([5,70,5]);
+    translate([8,5,0])
         rotate([0,0,90])
-            cube([10,80,10]);
-    translate([-80,0,0])
-        cube([10,80,10]);
-    translate([10,70,0])
+            cube([5,88.3,10]);
+    translate([-75,5,0])
+        cube([5,70,5]);
+    translate([8,70,0])
         rotate([0,0,90])
-            cube([10,80,10]);
+            cube([5,88,10]);
     //Front
-    translate([30,15,0])
-        cube([15,50,10]);
+    translate([32,15,0])
+        cube([10,50,10]);
     translate([6.56,9.38,0])
         rotate([0,0,-70])
-            cube([10,40,10]);
+            cube([5,40,10]);
     translate([44.16,56.92,0])
         rotate([0,0,70])
-            cube([10,40,10]);
+            cube([5,40,10]);
     //Front Buffers
-    translate([60,52.92,0])
+    translate([60,54.92,0])
         rotate([0,0,90])
-            cube([14,20,10]);
-    translate([60,12.92,0])
+            cube([10,20,10]);
+    translate([60,14.92,0])
         rotate([0,0,90])
-            cube([14,20,10]);
+            cube([10,20,10]);
     //Back
-    translate([-110,10,0])
-        cube([15,60,10]);
-    translate([-80,-0.0,0])
+    translate([-108,10,0])
+        cube([10,60,10]);
+    translate([-80,5,0])
         rotate([0,0,82])
-            cube([10,32,10]);
-    translate([-111.67,75.55,0])
+            cube([5,28.5,10]);
+    translate([-108.25,71.1,0])
         rotate([0,0,-82])
-            cube([10,32,10]);
+            cube([5,28.5,10]);
     //Back Buffers
-    translate([-110,56.92,0])
+    translate([-105,58.92,0])
         rotate([0,0,90])
-            cube([10,10,10]);
-    translate([-110,12.92,0])
+            cube([6.5,15,6.5]);
+    translate([-105,14.92,0])
         rotate([0,0,90])
-            cube([10,10,10]);
+            cube([6.5,15,6.5]);
 	}
 }
 
@@ -94,9 +95,9 @@ module mountingholes() {
 module buffers() {
 	w1 = 40;
 	w2 = 44;
-	translate([90,w1/2,5])
+	translate([89,w1/2,5])
 		bufferlarge();
-	translate([90,-w1/2,5])
+	translate([89,-w1/2,5])
 		bufferlarge();
 	translate([-86,w2/2,3])
 		buffersmall();
@@ -170,5 +171,5 @@ difference(){
 	}
 	mountingholes();
 	bufferholes();
-	cutouts();
+	//cutouts();
 }
