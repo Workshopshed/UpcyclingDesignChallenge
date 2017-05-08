@@ -1,3 +1,5 @@
+include <buffers.scad>;
+
 module Furby() 
 {
     //Overly simplified furby
@@ -48,13 +50,6 @@ module Chassis() {
     translate([38.16,56.5,0])
         rotate([0,0,67])
             cube([5,35,10]);
-    //Front Buffers
-    translate([65,55.5,0])
-        rotate([0,0,90])
-            cube([6.5,25,6.5]);
-    translate([65,18,0])
-        rotate([0,0,90])
-            cube([6.5,25,6.5]);
     //Back
     translate([-105.5,18,0])
         cube([5,40,10]);
@@ -64,15 +59,13 @@ module Chassis() {
     translate([-107.7,61.5,0])
         rotate([0,0,-64])
             cube([5,31,10]);
+    }
     //Back Buffers
-    translate([-105,55.5,0])
-        rotate([0,0,90])
-            cube([6.5,25,6.5]);
-    translate([-105,18,0])
-        rotate([0,0,90])
-            cube([6.5,25,6.5]);
-	}
-	mountingpoints();
+    buffers(-92,6.5,34);
+	//Front Buffers
+    buffers(80,6.5,34);
+    mountingpoints();
+  
 }
 
 module mountingpoints() {
