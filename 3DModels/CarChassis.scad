@@ -35,35 +35,37 @@ module Chassis() {
         cube([3,63,7]);
     translate([8,5,0])
         rotate([0,0,90])
-            cube([5,88.3,10]);
-    translate([-84,7,0])
-        cube([3,65,7]);
+            cube([5,81.5,10]);
+    translate([-84,9,0])
+        cube([3,62,7]);
     translate([8,70,0])
         rotate([0,0,90])
-            cube([5,88,10]);
+            cube([5,81.5,10]);
     //Front
-    translate([34.5,18,0])
-        cube([5,44,10]);
-    translate([6.1,9.38,0])
-        rotate([0,0,-67])
-            cube([5,35,10]);
-    translate([38.16,56.5,0])
-        rotate([0,0,67])
-            cube([5,35,10]);
+    translate([38,40,5])
+        cube([5,55,10],center=true);
+    translate([23.2,11.65,5])
+        rotate([0,0,-75])
+            cube([5,33,10],center=true);
+    translate([23.2,80-11.65,5])
+        rotate([0,0,75])
+            cube([5,33,10],center=true);
+
     //Back
-    translate([-105.5,18,0])
-        cube([5,40,10]);
-    translate([-80,5,0])
-        rotate([0,0,64])
-            cube([5,31,10]);
-    translate([-107.7,61.5,0])
-        rotate([0,0,-64])
-            cube([5,31,10]);
+    translate([-103,40,5])
+        cube([5,55,10],center=true);
+
+    translate([-88,11.65,5])
+        rotate([0,0,75])
+            cube([5,33,10],center=true);
+    translate([-88,80-11.65,5])
+        rotate([0,0,-75])
+            cube([5,33,10],center=true);        
     }
     //Back Buffers
-    buffers(-92,6.5,34);
+    buffers(-90,6.5,34);
 	//Front Buffers
-    buffers(80,6.5,34);
+    buffers(80,6.5);
     mountingpoints();
   
 }
