@@ -38,7 +38,7 @@ thickness = 8;
 difference() {
 
 union() {
-    w = 40.5;
+    w = 47;
     translate([-3,-(w/2 + 3.5),thickness/2])
         cube([16,8,thickness],center=true);
     translate([-3,(w/2+3.5),thickness/2])
@@ -98,12 +98,13 @@ module bumperbar(thickness)
 
 /*
 color("grey",0.2)
-    translate([10,0,0])
-        cube([40,40,40],center=true);
+    translate([18.5,0,0])
+        cube([45,45,45],center=true);
 */
 
 bumper();
 
-//translate([-2,0,13])
-//    switches();
-
+/*
+translate([-2,0,13])
+    switches();
+*/
