@@ -47,8 +47,8 @@ union() {
     translate([-8,0,thickness/2])
         cube([6,50,thickness],center=true);
 
-    translate([-11,0,(thickness+10)/2])
-        cube([12,10,thickness+6],center=true);
+    translate([-11,0,(thickness+8)/2])
+        cube([12,10,thickness+8],center=true);
 
     translate([3,-(w/2 + 16),thickness/2])
     rotate([0,0,5])
