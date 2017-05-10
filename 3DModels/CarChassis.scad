@@ -42,30 +42,30 @@ module Chassis() {
         rotate([0,0,90])
             cube([5,81.5,10]);
     //Front
-    translate([38,40,5])
-        cube([5,55,10],center=true);
-    translate([23.2,11.65,5])
-        rotate([0,0,-75])
+    translate([37,40,5])
+        cube([5,62,10],center=true);
+    translate([23.2,9.65,5])
+        rotate([0,0,-82])
             cube([5,33,10],center=true);
-    translate([23.2,80-11.65,5])
-        rotate([0,0,75])
+    translate([23.2,80-9.65,5])
+        rotate([0,0,82])
             cube([5,33,10],center=true);
 
     //Back
     translate([-103,40,5])
-        cube([5,55,10],center=true);
+        cube([5,62,10],center=true);
 
-    translate([-88,11.65,5])
-        rotate([0,0,75])
+    translate([-88,9.65,5])
+        rotate([0,0,82])
             cube([5,33,10],center=true);
-    translate([-88,80-11.65,5])
-        rotate([0,0,-75])
+    translate([-88,80-9.65,5])
+        rotate([0,0,-82])
             cube([5,33,10],center=true);        
     }
     //Back Buffers
     buffers(-90,6.5,34);
 	//Front Buffers
-    buffers(80,6.5);
+    buffers(78,6.5);
     mountingpoints();
   
 }
