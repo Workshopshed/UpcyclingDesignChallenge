@@ -3,8 +3,8 @@ include <microswitch.scad>;
 
 module switches() {
 
-separation = 62/2;
-rotation = 10;
+separation = 72/2;
+rotation = 5;
 
 translate([0,separation,0])  
 rotate([0,0,-rotation])
@@ -18,8 +18,8 @@ translate([0,-separation,0])
 
 module switchholes() {
 
-separation = 62/2;
-rotation = 10;
+separation = 72/2;
+rotation = 5;
 
 translate([0,separation,0])  
 rotate([0,0,-rotation])
@@ -38,52 +38,69 @@ thickness = 8;
 difference() {
 
 union() {
-    translate([-6,-19,thickness/2])
-        cube([20,12,thickness],center=true);
-    translate([-6,19,thickness/2])
-        cube([20,12,thickness],center=true);
+    w = 40.5;
+    translate([-3,-(w/2 + 3.5),thickness/2])
+        cube([16,8,thickness],center=true);
+    translate([-3,(w/2+3.5),thickness/2])
+        cube([16,8,thickness],center=true);
 
-    translate([3,-32,thickness/2])
-    rotate([0,0,10])
+    translate([-8,0,thickness/2])
+        cube([6,50,thickness],center=true);
+
+    translate([-11,0,(thickness+10)/2])
+        cube([12,10,thickness+6],center=true);
+
+    translate([3,-(w/2 + 16),thickness/2])
+    rotate([0,0,5])
         cube([6,29,thickness],center=true);
 
-    translate([3,32,thickness/2])
-    rotate([0,0,-10])
+    translate([3,(w/2 + 16),thickness/2])
+    rotate([0,0,-5])
         cube([6,29,thickness],center=true);
 
-    translate([5,0,0])
+    translate([11,0,0])
+        bumperbar(thickness);
+    }
 
+
+    //Mounting buffers
+    translate([2,0,0.5]) 
+        buffers(-8,7);
+
+    //Cutouts to help bending
+    translate([-15,-5,-1])
+        cylinder(h=22,d=5.5,$fn=30);
+
+    translate([-15,5,-1])
+        cylinder(h=22,d=5.5,$fn=30);
+
+    translate([-2,0,-1])
+        switchholes();
+    }
+}
+
+module bumperbar(thickness)
+{
+    bumpwidth = 130;
+    
     intersection() {
-        translate([-30,-60,0])
-        cube([30,120,thickness+10]);
+        translate([-30,-bumpwidth/2,0])
+        cube([30,bumpwidth,thickness+10]);
 
-        translate([378,0,0])
+        translate([350,0,0])
         difference() {
-            cylinder(h=thickness+8,r=401,$fn=200);
+            cylinder(h=thickness+8,r=380,$fn=200);
             translate([0,0,-1])
-                cylinder(h=thickness+20,r=398,$fn=200);
+                cylinder(h=thickness+20,r=377,$fn=200);
         }
     }
 }
 
-//Mounting buffers
-translate([1,0,0.5]) 
-    buffers(-8,7,34);
-
-//Cutouts to help bending
-translate([-13,-25,-1])
-    cylinder(h=22,d=5.5,$fn=30);
-
-translate([-13,25,-1])
-    cylinder(h=22,d=5.5,$fn=30);
-
-translate([-2,0,-1])
-    switchholes();
-}
-
-
-
-}
+/*
+color("grey",0.2)
+    translate([10,0,0])
+        cube([40,40,40],center=true);
+*/
 
 bumper();
 
