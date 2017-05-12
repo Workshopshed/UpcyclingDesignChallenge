@@ -1,3 +1,5 @@
+include <bumper.scad>;
+
 module headlight() {
 	//Simplified model
 	cube([14,14,8],center=true);
@@ -73,26 +75,56 @@ module lightbar()
     bumpwidth = 130;
 	thickness = 30;
     
-    intersection() {
-        translate([-30,-bumpwidth/2,0])
-        cube([30,bumpwidth,thickness]);
+    difference() {
+    
+        union() {
+            intersection() {
+                translate([-30,-bumpwidth/2,0])
+                cube([30,bumpwidth,thickness]);
 
-        translate([350,0,0])
-        difference() {
-            cylinder(h=thickness+10,r=380,$fn=200);
-            translate([0,0,-1])
-                cylinder(h=thickness+10,r=370,$fn=200);
-        }
+                translate([350,0,0])
+                difference() {
+                    cylinder(h=thickness+10,r=380,$fn=400);
+                    translate([0,0,-1])
+                        cylinder(h=thickness+10,r=374,$fn=400);
+                }
+            }
+            
+            translate([-21,0,5])
+                cube([6,40,10],center=true);
+                       
+            }
+        translate([-15,0,0])
+            connectionholes();
+            
+        translate([-30,0,15])
+            scale([1,1,3])
+            	color([0.85,0.85,0.85])
+                plate();
+            
+        translate([-9,-42,thickness/2])
+            cube([30,32,32], center=true);
+        translate([-20,-42,thickness/2])
+            cube([30,30,16], center=true); 
+            
+        translate([-9,42,thickness/2])
+            cube([30,32,32], center=true);
+        translate([-20,42,thickness/2])
+            cube([30,30,16], center=true); 
+
     }
+    
+
 }
 
 module plate() {
-	color("white")
 		cube([2,54,16],center=true);	
 }
 
-lightbar();
+color([0.85,0.85,0.85])
+    lightbar();
 
+/*
 translate([-27,35,15])
 	lights();
 
@@ -101,4 +133,11 @@ translate([-27,-35,15])
 		lights();
 
 translate([-30,0,15])
-	plate();
+	color("white")
+        plate();
+
+translate([-13,0,-1])
+    rotate([180,0,0])
+        bumper();
+
+*/
