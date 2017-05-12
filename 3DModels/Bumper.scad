@@ -31,21 +31,6 @@ translate([0,-separation,15])
 
 }
 
-module connectionholes() {
-
-separation = 30/2;
-rotation = 360/16;
-
-translate([-6,separation,-20])  
-rotate([0,0,-rotation])
-        cylinder(h=50,r=2,$fn=8);
-    
-translate([-6,-separation,20])  
-    rotate([0,180,180+rotation])
-        cylinder(h=50,r=2,$fn=8);
-
-}
-
 module bumper() {
 
 thickness = 8;
@@ -91,14 +76,7 @@ union() {
 
     translate([-2,0,-1])
         switchholes();
-
-
-    translate([-2,0,-1])
-        connectionholes();
-
     }
-
-
 }
 
 module bumperbar(thickness)
@@ -111,9 +89,9 @@ module bumperbar(thickness)
 
         translate([350,0,0])
         difference() {
-            cylinder(h=thickness+8,r=380,$fn=400);
+            cylinder(h=thickness+8,r=380,$fn=200);
             translate([0,0,-1])
-                cylinder(h=thickness+20,r=377,$fn=400);
+                cylinder(h=thickness+20,r=377,$fn=200);
         }
     }
 }
@@ -124,16 +102,9 @@ color("grey",0.2)
         cube([45,45,45],center=true);
 */
 
+bumper();
+
 /*
-translate([-12,0,-1])
-    rotate([180,0,0]) 
-{
-        bumper();
-
-
 translate([-2,0,13])
     switches();
-}
 */
-
- //bumper();
