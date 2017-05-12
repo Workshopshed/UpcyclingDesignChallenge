@@ -24,5 +24,5 @@ Not using TX and RX so can use pin 0 and 1 for the lights, need pins that are sh
 * Front Lights - D2, D4
 * Rear Lights - D3, UART
 * Motor - D6, D7, A3
-* Bumpers - A1
+* Bumpers - A0, A1
 * Ambient light sensor - A2
