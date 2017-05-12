@@ -63,9 +63,9 @@ module Chassis() {
             cube([5,33,10],center=true);        
     }
     //Back Buffers
-    buffers(-90,6.5,34);
+    buffers(-90,6,34);
 	//Front Buffers
-    buffers(78,6.5);
+    buffers(78,6);
     mountingpoints();
   
 }
