@@ -65,7 +65,7 @@ union() {
 
     //Mounting buffers
     translate([2,0,0.5]) 
-        buffers(-8,7);
+        buffers(-8.5,7.5);
 
     //Cutouts to help bending
     translate([-15,-5,-1])
@@ -96,6 +96,41 @@ module bumperbar(thickness)
     }
 }
 
+module testhole() {
+
+thickness = 8;
+
+difference() {
+
+union() {
+    w = 47;
+
+    translate([-3,(w/2+3.5),thickness/2])
+       cube([16,9,thickness+2],center=true);
+
+   }
+
+
+    //Mounting buffers
+    translate([2,-0.5,0.5]) 
+        buffers(-8.5,7.5);
+
+    }
+}
+
+module testpeg() {
+    intersection() {
+        
+    thickness = 8;
+        w = 47;
+         translate([-3,(w/2+3.5),(thickness/2)])
+           cube([16,9,thickness+2],center=true);
+
+            buffers(-8.5,7);
+    }
+}
+    
+
 /*
 color("grey",0.2)
     translate([18.5,0,0])
@@ -103,8 +138,11 @@ color("grey",0.2)
 */
 
 bumper();
+//testhole();
 
 /*
 translate([-2,0,13])
     switches();
 */
+
+
