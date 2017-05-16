@@ -1,0 +1,97 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "mraaStub",
+        "scope": null,
+        "escapedName": "mraaStub",
+        "name": "mraaStub",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\andy.clark\\Documents\\My Stuff\\Workshop\\Upcycling Design Challenge\\Source\\Tests"
+    ]
+  ],
+  "_from": "mraaStub@latest",
+  "_id": "mraaStub@0.0.1",
+  "_inCache": true,
+  "_location": "/mraaStub",
+  "_nodeVersion": "4.4.4",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/mraaStub-0.0.1.tgz_1464047332232_0.776590229710564"
+  },
+  "_npmUser": {
+    "name": "dantler",
+    "email": "david.a.antler@intel.com"
+  },
+  "_npmVersion": "2.15.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "mraaStub",
+    "scope": null,
+    "escapedName": "mraaStub",
+    "name": "mraaStub",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/mraaStub/-/mraaStub-0.0.1.tgz",
+  "_shasum": "755ce7fee9480b7ac73f0ff6b2b19795a7ccc328",
+  "_shrinkwrap": null,
+  "_spec": "mraaStub",
+  "_where": "C:\\Users\\andy.clark\\Documents\\My Stuff\\Workshop\\Upcycling Design Challenge\\Source\\Tests",
+  "author": {
+    "name": "David A Antler",
+    "email": "david.a.antler@intel.com"
+  },
+  "bugs": {
+    "url": "https://github.com/intel-iot-devkit/mraa/issues"
+  },
+  "dependencies": {},
+  "description": "Enables simulation of mraa interfaces for testing purposes",
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "grunt": "^1.0.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.4.5"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "755ce7fee9480b7ac73f0ff6b2b19795a7ccc328",
+    "tarball": "https://registry.npmjs.org/mraaStub/-/mraaStub-0.0.1.tgz"
+  },
+  "homepage": "https://github.com/intel-iot-devkit/mraa#readme",
+  "keywords": [
+    "mraa",
+    "iot",
+    "intel",
+    "libmraa",
+    "test",
+    "galileo",
+    "edison"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "dantler",
+      "email": "david.a.antler@intel.com"
+    }
+  ],
+  "name": "mraaStub",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intel-iot-devkit/mraa.git"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "0.0.1"
+}
