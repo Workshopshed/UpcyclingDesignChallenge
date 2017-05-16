@@ -49,3 +49,4 @@ and use `require('../mraaSwitcher')` everywhere!
 ## License
 
 See [COPYING file](../COPYING) in the root of this repository.
+ Note that this module depends on winston, a logging library
