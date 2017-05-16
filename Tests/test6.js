@@ -14,7 +14,7 @@ myLed.dir(m.DIR_OUT); //set the gpio direction to output
 
 function indicate() {
     var count = 1;
-    var ledState = false;
+    var ledState = true;
     var intervalId = setInterval(function() {
     	myLed.write(ledState?1:0);
         ledState = !ledState;
