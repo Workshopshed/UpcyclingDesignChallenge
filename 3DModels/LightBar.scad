@@ -73,14 +73,14 @@ module lightbar()
 {	
 	w=130;
     bumpwidth = 130;
-	thickness = 30;
+	thickness = 30.5;
     
     difference() {
     
         union() {
             intersection() {
                 translate([-30,-bumpwidth/2,0])
-                cube([30,bumpwidth,thickness]);
+                cube([30,bumpwidth,8+thickness]);
 
                 translate([350,0,0])
                 difference() {
@@ -90,25 +90,40 @@ module lightbar()
                 }
             }
             
-            translate([-21,0,5])
-                cube([6,40,10],center=true);
-                       
+            translate([-21,0,3])
+                cube([6,40,6],center=true);
+               
+            //Mounting points
+            w2 = 47;
+            thickness2 = 9;
+            translate([-18,-(w2/2 + 4),-1 + thickness + thickness2/2])
+                cube([16,9,thickness2],center=true);
+            translate([-18,(w2/2+4),-1 + thickness + thickness2/2])
+                cube([16,9,thickness2],center=true);
+            translate([-22,0,-1 + thickness + thickness2/2])
+                cube([8,64,thickness2],center=true);    
+            
             }
-        translate([-15,0,0])
+        translate([-15,0,-4])
             connectionholes();
+            
+        //Mounting buffers
+        translate([-15,0,thickness]) 
+            buffers(-8.5,7.5);
+            
             
         translate([-30,0,15])
             scale([1,1,3])
             	color([0.85,0.85,0.85])
                 plate();
             
-        translate([-9,-42,thickness/2])
-            cube([30,32,32], center=true);
+        translate([-9,-42,-0.5+thickness/2])
+            cube([30,32,30], center=true);
         translate([-20,-42,thickness/2])
             cube([30,30,16], center=true); 
             
-        translate([-9,42,thickness/2])
-            cube([30,32,32], center=true);
+        translate([-9,42,-0.5+thickness/2])
+            cube([30,32,30], center=true);
         translate([-20,42,thickness/2])
             cube([30,30,16], center=true); 
 
