@@ -122,6 +122,58 @@ var mraaStub = function() {
         logger.log('info',"SPI mode stub invoked.");
     };
 
+    //PWM
+    function Pwm(pin,owner,chipid) {
+        var self = this;
+        this.pin = pin;
+        this.owner = owner;
+        this.chipid = chipid;
+        this.percent = 0;
+    }
+    
+    Pwm.prototype.write = function(percentage) {
+        this.percent = percentage;
+        logger.log('info',"Pwm write stub invoked.");
+    };
+
+    Pwm.prototype.read = function() {
+        logger.log('info',"Pwm read stub invoked.");
+        return this.percent;
+    };
+
+    Pwm.prototype.period = function(seconds) {
+        logger.log('info',"Pwm period_ms stub invoked.");
+    };
+    
+    Pwm.prototype.period_us = function(us) {
+        logger.log('info',"Pwm period_us stub invoked.");
+    };
+
+    Pwm.prototype.pulsewidth = function(s) {
+        logger.log('info',"Pwm pulsewidth stub invoked.");
+    };
+
+    Pwm.prototype.pulsewidth_ms = function(ms) {
+        logger.log('info',"Pwm pulsewidth_ms stub invoked.");
+    };
+
+    Pwm.prototype.pulsewidth_us = function(us) {
+        logger.log('info',"Pwm pulsewidth_us stub invoked.");
+    };
+
+    Pwm.prototype.enable = function(us) {
+        logger.log('info',"Pwm enable stub invoked.");
+    };
+
+    Pwm.prototype.max_period = function(us) {
+        logger.log('info',"Pwm max_period stub invoked.");
+    };
+
+    Pwm.prototype.min_period = function(us) {
+        logger.log('info',"Pwm min_period stub invoked.");
+    };
+
+
     function I2c(num) {
         this._num = num;
         this._regMapInitialized = false;
@@ -215,7 +267,7 @@ var mraaStub = function() {
     self.Gpio = Gpio;
     self.Spi = Spi;
     self.I2c = I2c;
-
+    self.Pwm = Pwm;
 };
 
 m = new mraaStub();
