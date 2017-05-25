@@ -10,7 +10,7 @@ volatile int resetCountDown;
    counter += direction;
    if (counter < 0)         { counter = maxPulses; }
    if (counter > maxPulses) { counter = 0; }
-   if (resetCountDown > 0) { resetCountDown--; }
+   if (resetCountDown > 0)  { resetCountDown--; }
    debug_print(DBG_INFO, "Counter: %d\n",counter);
    return IRQ_HANDLED;
  }
