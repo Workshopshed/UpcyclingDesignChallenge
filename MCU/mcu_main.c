@@ -1,27 +1,27 @@
 #include "mcu_api.h"
 #include "mcu_errno.h"
+int maxPulses;
 volatile int counter;
 volatile int direction;
-int maxPulses;
+volatile int resetCountDown;
 
  int IRQpulse(int req)
  {
    counter += direction;
-   if (counter < 0) {
-    counter = maxPulses;
-   }
-   if (counter > maxPulses) {
-    counter = 0;
-   }
+   if (counter < 0)         { counter = maxPulses; }
+   if (counter > maxPulses) { counter = 0; }
+   if (resetCountDown > 0) { resetCountDown--; }
    debug_print(DBG_INFO, "Counter: %d\n",counter);
    return IRQ_HANDLED;
  }
 
  int IRQreset(int req)
  {
+   debug_print(DBG_INFO, "Reset triggered.\n");
+   if (resetCountDown > 0) { return IRQ_HANDLED; }
+   resetCountDown = 10; //No more resets till 10 pules have passed.
    counter = 0;
-   mcu_sleep(20);  //Debounce 200ms
-   debug_print(DBG_INFO, "Reset.\n");
+   debug_print(DBG_INFO, "Reset counter.\n");
    return IRQ_HANDLED;
  }
 
