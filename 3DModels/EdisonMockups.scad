@@ -1,5 +1,6 @@
 module EdisonArduino()
 {
+	color("SteelBlue")
     //Mock Edison Arduino Breakout
     difference() {
     cube([122.3,72,3]);
@@ -26,6 +27,7 @@ module EdisonArduinoMountingHoles(radius)
 
 
 module EdisonMini() {
+	color("SteelBlue")
 	difference() {
     cube([60,29,3]);
 	EdisonMiniMountingHoles(1.5);
