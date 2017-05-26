@@ -1,3 +1,4 @@
+include <EdisonMockups.scad>
 
 module exhaust() {
 	translate([0,0,-1])
@@ -34,27 +35,6 @@ module cableclamp() {
 	cube([10,6,3]);
 	translate([3,3,0])
 		cylinder(h=4,d=3,$fn=30);
-}
-
-module Edison()
-{
-    //Mock Edison
-    difference() {
-    cube([122.3,72,3]);
-    //Mounting Holes
-    translate([6.3,6.3,-3])
-        cylinder(h=10,d=3,$fn=30);
-    translate([6.3,59.1,-3])
-        cylinder(h=10,d=3,$fn=30);
-    translate([48,27.2,-3])
-        cylinder(h=10,d=3,$fn=30);    
-    translate([48,51.5,-3])
-        cylinder(h=10,d=3,$fn=30);    
-    translate([106.6,11.9,-3])
-        cylinder(h=10,d=3,$fn=30);  
-    translate([106.4,60.2,-3])
-        cylinder(h=10,d=3,$fn=30); 
-    }
 }
 
 module Supports() {
@@ -168,7 +148,7 @@ module Holes() {
 }
 
 //translate([0,0,21])
-//	Edison();
+//	EdisonArduino();
 difference() {
 union() {
 Supports();
