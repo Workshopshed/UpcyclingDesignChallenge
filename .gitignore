@@ -52,3 +52,12 @@ CarController/.vs/config/applicationhost.config
 .idea/workspace.xml
 .idea/vcs.xml
 .idea/modules.xml
+3DModels/HeadLight.json
+3DModels/LightBar.json
+CarController/TestCertificate.cer
+CarController/TestCertificate.pfx
+Upcycling.xdk
+Upcycling.xdke
+CarController/TestCertificate.pem
+xdk/project-info.json
+3DModels/EdisonMockups.json
