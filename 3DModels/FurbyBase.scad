@@ -8,34 +8,70 @@ linear_extrude(height = 8, center = true)
 
 module FurbyWall() {
 difference() {
-linear_extrude(height = 20, center = true)
+linear_extrude(height = 30, center = true)
 	import("FurbyBaseOutline.dxf");
 
 translate([4,4,0])
 	scale([0.9,0.9,1.2])
-		linear_extrude(height = 20, center = true)
+		linear_extrude(height = 30, center = true)
 			import("FurbyBaseOutline.dxf");
 
-translate([7,19,-5])
-	cube([63,5,28]);
+translate([5,22,-5])
+	cube([74,5,28]);
 }
 
 }
 
 module EdisonMounts() {
+	translate([-3,2,0])
 	difference() {
 	union() {
-		translate([9,9,3])
-			cube([6,10,28]);
-		translate([51,4,3])
-			cube([6,15,28]);
+		translate([9,16,3])
+			cube([6,4,28]);
+		translate([51,16,3])
+			cube([16,4,28]);
 	}
 	translate([9,22,3])
 		rotate([90,0,0])
-			EdisonMiniMountingHoles(1.5);
+			EdisonMiniMountingHoles(1);
 	}
 	
 }	
+
+module ModuleMounts() {
+	translate([10,53,2])
+		cube([58,3,4]);
+	translate([13,62,2])
+		cube([49,3,4]);	
+}
+
+module FurbyPivot() {
+	//translate([60,15,25])
+	//cube([7,38,10]);	
+	
+	translate([64,20,30])
+	difference() {
+		hull() {
+		translate([-3,-2,-27])
+			cube([10,4,20]);
+		rotate([0,90,90])
+			cylinder(d=7,h=4,center=true,$fn=40);
+		}
+		rotate([0,90,90])
+			cylinder(d=2,h=9,center=true,$fn=40);	
+		}	
+	translate([64,38+14,30])
+	difference() {
+		hull() {
+		translate([-3,-2,-27])
+			cube([10,4,20]);
+		rotate([0,90,90])
+			cylinder(d=7,h=4,center=true,$fn=40);
+		}
+		rotate([0,90,90])
+			cylinder(d=2,h=9,center=true,$fn=40);	
+	}
+}
 
 module Platform() {
 difference() {	
@@ -74,7 +110,7 @@ module Motorboard() {
 }
 
 module Components() {
-translate([8,22,3])
+translate([6,25,3])
 	rotate([90,0,0])
 		EdisonMini();
 
@@ -94,7 +130,7 @@ translate([25,60,11])
 		Motorboard();
 }
 
-Components();
+//Components();
 
 union() {
 Platform();
@@ -103,5 +139,7 @@ FurbyBase();
 translate([0,0,8])
 	FurbyWall();
 EdisonMounts();
+ModuleMounts();
+FurbyPivot();
 }
 	
