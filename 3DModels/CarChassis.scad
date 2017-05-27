@@ -1,31 +1,11 @@
 include <buffers.scad>;
+include <EdisonMockups.scad>
 
 module Furby() 
 {
     //Overly simplified furby
     scale([0.9,0.85,1])
         cylinder(h=100,d=100,$fn=100);
-}
-
-module Edison()
-{
-    //Mock Edison
-    difference() {
-    cube([122.3,72,3]);
-    //Mounting Holes
-    translate([6.3,6.3,-3])
-        cylinder(h=10,d=3,$fn=30);
-    translate([6.3,59.1,-3])
-        cylinder(h=10,d=3,$fn=30);
-    translate([48,27.2,-3])
-        cylinder(h=10,d=3,$fn=30);    
-    translate([48,51.5,-3])
-        cylinder(h=10,d=3,$fn=30);    
-    translate([106.6,11.9,-3])
-        cylinder(h=10,d=3,$fn=30);  
-    translate([106.4,60.2,-3])
-        cylinder(h=10,d=3,$fn=30); 
-    }
 }
 
 module Chassis() {
@@ -100,7 +80,7 @@ module mountingholes() {
 
 /*
 rotate([0,0,90])
-    Edison();
+    EdisonArduino();
 */
 
 difference(){
