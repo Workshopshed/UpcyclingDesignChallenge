@@ -8,7 +8,7 @@ linear_extrude(height = 8, center = true)
 
 module FurbyWall() {
 difference() {
-linear_extrude(height = 30, center = true)
+linear_extrude(height = 22, center = true)
 	import("FurbyBaseOutline.dxf");
 
 translate([4,4,0])
@@ -16,11 +16,12 @@ translate([4,4,0])
 		linear_extrude(height = 30, center = true)
 			import("FurbyBaseOutline.dxf");
 
-translate([5,22,-5])
+translate([5,22,-13])
 	cube([74,5,28]);
+	}
 }
 
-}
+
 
 module EdisonMounts() {
 	translate([-3,2,0])
@@ -29,7 +30,7 @@ module EdisonMounts() {
 		translate([9,16,3])
 			cube([6,4,28]);
 		translate([51,16,3])
-			cube([16,4,28]);
+			cube([14,4,28]);
 	}
 	translate([9,22,3])
 		rotate([90,0,0])
@@ -133,10 +134,11 @@ translate([25,60,11])
 //Components();
 
 union() {
+translate([0,0,7])
 Platform();
-translate([0,0,-0.5])
-FurbyBase();
-translate([0,0,8])
+//translate([0,0,-0.5])
+//FurbyBase();
+translate([0,0,14])
 	FurbyWall();
 EdisonMounts();
 ModuleMounts();
