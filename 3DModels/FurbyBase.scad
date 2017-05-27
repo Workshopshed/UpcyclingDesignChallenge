@@ -16,8 +16,26 @@ translate([4,4,0])
 		linear_extrude(height = 20, center = true)
 			import("FurbyBaseOutline.dxf");
 
+translate([7,19,-5])
+	cube([63,5,28]);
 }
+
 }
+
+module EdisonMounts() {
+	difference() {
+	union() {
+		translate([9,9,3])
+			cube([6,10,28]);
+		translate([51,4,3])
+			cube([6,15,28]);
+	}
+	translate([9,22,3])
+		rotate([90,0,0])
+			EdisonMiniMountingHoles(1.5);
+	}
+	
+}	
 
 module Platform() {
 difference() {	
@@ -26,12 +44,12 @@ difference() {
 		cylinder(d=80,h=8,center=true,$fn=70);
 
     //Chassis cutouts
-    translate([70,0+2,-17])
+    translate([70,0+2-0.25,-17])
         rotate([0,0,90])
-            cube([5,81.5+0.5,10]);
-    translate([70,65+2,-17])
+            cube([5+0.5,81.5,10]);
+    translate([70,65+2-0.25,-17])
         rotate([0,0,90])
-            cube([5,81.5+0.5,10]);
+            cube([5+0.5,81.5+0.5,10]);
 	}
 }
 
@@ -78,10 +96,12 @@ translate([25,60,11])
 
 Components();
 
+union() {
 Platform();
 translate([0,0,-0.5])
 FurbyBase();
 translate([0,0,8])
 	FurbyWall();
-
+EdisonMounts();
+}
 	
