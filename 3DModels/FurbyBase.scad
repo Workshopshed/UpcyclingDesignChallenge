@@ -2,7 +2,7 @@ include <EdisonMockups.scad>
 
 module FurbyBase() {
 
-linear_extrude(height = 4, center = true)
+linear_extrude(height = 8, center = true)
 	import("FurbyBaseOutline.dxf");
 }
 
@@ -17,6 +17,22 @@ translate([4,4,0])
 			import("FurbyBaseOutline.dxf");
 
 }
+}
+
+module Platform() {
+difference() {	
+	translate([39,36,-8])
+	scale([1,1.05,1])
+		cylinder(d=80,h=8,center=true,$fn=70);
+
+    //Chassis cutouts
+    translate([70,0+2,-17])
+        rotate([0,0,90])
+            cube([5,81.5+0.5,10]);
+    translate([70,65+2,-17])
+        rotate([0,0,90])
+            cube([5,81.5+0.5,10]);
+	}
 }
 
 module Battery() {
@@ -39,7 +55,7 @@ module Motorboard() {
 		cube([20,20,3],center=true,$fn=50);
 }
 
-
+module Components() {
 translate([8,22,3])
 	rotate([90,0,0])
 		EdisonMini();
@@ -58,7 +74,14 @@ translate([50,60,11])
 translate([25,60,11])
 	rotate([90,0,0])
 		Motorboard();
+}
 
+Components();
+
+Platform();
+translate([0,0,-0.5])
 FurbyBase();
 translate([0,0,8])
 	FurbyWall();
+
+	
