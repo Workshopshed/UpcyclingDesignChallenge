@@ -78,7 +78,11 @@ difference() {
         translate([51,65-35-0.25,-17])
             rotate([0,0,90])
                 cube([5+0.5,100,10]); 
-        
+    
+    //Cable Holes
+    translate([-11,20,-4])
+        rotate([90,0,0])
+            MotorCables();    
     //Trim top    
     translate([-50,-50,14])
         cube([100,100,30]);
