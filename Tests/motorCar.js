@@ -16,16 +16,19 @@ var mraa = require('mraa');
     self.MotorPinSpeed = new mraa.Pwm(SpeedPin);  //PWM available on default swizzler positions. (3,5,6,9)
 
     //Start off disabled
-    self.Stop();
+    self.Motor1Pin1.write(0);
+    self.Motor1Pin2.write(0);
+    self.Motor2Pin1.write(0);
+    self.Motor2Pin2.write(0);      
 
     self.MotorPinSpeed.period_us(700);
     self.MotorPinSpeed.enable(true);
 
     self.Forward = function() {
-        self.Motor1Pin1.write(1);
-        self.Motor1Pin2.write(0);
-        self.Motor2Pin1.write(1);
-        self.Motor2Pin2.write(0);        
+        self.Motor1Pin1.write(0);
+        self.Motor1Pin2.write(1);
+        self.Motor2Pin1.write(0);
+        self.Motor2Pin2.write(1);        
     };
 
     self.Left = function() {
@@ -43,10 +46,10 @@ var mraa = require('mraa');
     };   
         
     self.Reverse = function() {
-        self.Motor1Pin1.write(0);
-        self.Motor1Pin2.write(1);
-        self.Motor2Pin1.write(0);
-        self.Motor2Pin2.write(1);        
+        self.Motor1Pin1.write(1);
+        self.Motor1Pin2.write(0);
+        self.Motor2Pin1.write(1);
+        self.Motor2Pin2.write(0);        
     };
 
     self.Stop = function() {
@@ -56,8 +59,8 @@ var mraa = require('mraa');
         self.Motor2Pin2.write(0);        
     };
 
-    self.Speed = function(percent) {
-        self.MotorPinSpeed.write(percent);
+    self.Speed = function(speed) {
+        self.MotorPinSpeed.write(speed);
     };
 
 };
