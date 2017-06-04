@@ -12,6 +12,20 @@ var l = new lights(3,4,5,1);
 
 l.Flash();
 
+setTimeout(function() {l.Left()}, 2000);
+setTimeout(function() {l.Right()}, 8000);
+
+setTimeout(function() {
+var count = 1;
+var intervalId = setInterval(function() {
+    l.Headlights(count/20.0);
+            if (count++ >= 20) {
+            l.Headlights(0);
+            clearInterval(intervalId);
+        }
+    }, 200);
+},15000);
+
 /*
 setTimeout(function() {m.Reverse()}, 2000);
 setTimeout(function() {m.Forward()}, 4000);
@@ -21,6 +35,8 @@ setTimeout(function() {m.Right()}, 7000);
 setTimeout(function() {m.Forward()}, 8000);
 setTimeout(function() {m.Stop()}, 10000);
 */
+
+//setInterval(function () {} , 1000); //Do nothing, stops the apps exiting
 
 process.on('SIGINT', function () {
     console.log("Shutting down SIGINT (Ctrl-C)");
