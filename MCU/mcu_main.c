@@ -1,27 +1,26 @@
 #include "mcu_api.h"
 #include "mcu_errno.h"
-int maxPulses;
 volatile int counter;
 volatile int direction;
-volatile int resetCountDown;
+int maxPulses;
 
  int IRQpulse(int req)
  {
    counter += direction;
-   if (counter < 0)         { counter = maxPulses; }
-   if (counter > maxPulses) { counter = 0; }
-   if (resetCountDown > 0)  { resetCountDown--; }
+   if (counter < 0) {
+    counter = maxPulses;
+   }
+   if (counter > maxPulses) {
+    counter = 0;
+   }
    debug_print(DBG_INFO, "Counter: %d\n",counter);
    return IRQ_HANDLED;
  }
 
  int IRQreset(int req)
  {
-   debug_print(DBG_INFO, "Reset triggered.\n");
-   if (resetCountDown > 0) { return IRQ_HANDLED; }
-   resetCountDown = 10; //No more resets till 10 pules have passed.
    counter = 0;
-   debug_print(DBG_INFO, "Reset counter.\n");
+   debug_print(DBG_INFO, "Reset.\n");
    return IRQ_HANDLED;
  }
 
@@ -34,8 +33,8 @@ volatile int resetCountDown;
     debug_print(DBG_INFO, "mcu app starting...\n");
     direction = 1;
     maxPulses = 208;    //Max pulses per revolution, was determined experimentally
-    gpio_setup(48, 0);  /* set GPIO 48 DIG7 as input*/
-    gpio_register_interrupt(48, 1, IRQpulse);
+    gpio_setup(183, 0);  /* set GPIO 183 DIG9 as input*/
+    gpio_register_interrupt(183, 1, IRQpulse);
     gpio_setup(49, 0);  /* set GPIO 49 DIG8 as input*/
     gpio_register_interrupt(49, 1, IRQreset);
     while (1)
