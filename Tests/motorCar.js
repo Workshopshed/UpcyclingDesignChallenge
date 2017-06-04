@@ -21,7 +21,7 @@ var mraa = require('mraa');
     self.Motor2Pin1.write(0);
     self.Motor2Pin2.write(0);      
 
-    self.MotorPinSpeed.period_us(700);
+    self.MotorPinSpeed.period_us(100);
     self.MotorPinSpeed.enable(true);
 
     self.Forward = function() {
@@ -32,7 +32,7 @@ var mraa = require('mraa');
     };
 
     self.Left = function() {
-        self.Motor1Pin1.write(1);
+        self.Motor1Pin1.write(0);
         self.Motor1Pin2.write(0);
         self.Motor2Pin1.write(0);
         self.Motor2Pin2.write(1);             
@@ -41,7 +41,7 @@ var mraa = require('mraa');
     self.Right = function() {
         self.Motor1Pin1.write(0);
         self.Motor1Pin2.write(1);
-        self.Motor2Pin1.write(1);
+        self.Motor2Pin1.write(0);
         self.Motor2Pin2.write(0);             
     };   
         
