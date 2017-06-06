@@ -33,10 +33,10 @@ int maxPulses;
     debug_print(DBG_INFO, "mcu app starting...\n");
     direction = 1;
     maxPulses = 208;    //Max pulses per revolution, was determined experimentally
-    gpio_setup(183, 0);  /* set GPIO 183 DIG9 as input*/
-    gpio_register_interrupt(183, 1, IRQpulse);
-    gpio_setup(49, 0);  /* set GPIO 49 DIG8 as input*/
-    gpio_register_interrupt(49, 1, IRQreset);
+    gpio_setup(28, 0);  /* set GP28 MRAA(8) Pin J17-9 as input*/
+    gpio_register_interrupt(28, 1, IRQpulse);
+    gpio_setup(111, 0);  /* set GP111 MRAA(9) Pin J17-10 as input*/
+    gpio_register_interrupt(111, 1, IRQreset);
     while (1)
     {
      //Wait for command from host
