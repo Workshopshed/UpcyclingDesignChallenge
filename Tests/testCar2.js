@@ -8,7 +8,7 @@ Indicator R - Pin 4
 */
 
 //AIO pins are treated as 0-5 in mraa_aio_init() but as 14-19 for everything else. Therefore use mraa_gpio_init(14) to use A0 as a GPIO
-var l = new lights(3,4,5,1);
+var l = new lights(4,3,5,1);
 
 l.Flash();
 
