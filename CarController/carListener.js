@@ -37,6 +37,11 @@ client.on('message', function (topic, message) {
     console.log(message.toString());
 })
 
+controller.on('action', function (message) { 
+    client.publish('E14_UCDC/+/Events',message)
+    console.log('Event:%s',message.toString());
+})
+
 process.on('SIGINT', function () {
     console.log("Shutting down SIGINT (Ctrl-C)");
     controller.shutdown();
