@@ -1,6 +1,6 @@
 var mraa = require('mraa');
 
-    var Motor = function (D1Pin, D2Pin, SpeedPin, HomePin, SensePin, mcuStream) {
+    var Motor = function (D1Pin, D2Pin, SpeedPin, HomePin, SensePin, mcuCommands, mcuMessages) {
     var self = this;
 
     self.MotorPin1 = new mraa.Gpio(D1Pin);
@@ -10,14 +10,15 @@ var mraa = require('mraa');
     self.MotorPinSpeed = new mraa.Pwm(SpeedPin);  //PWM available on default swizzler positions. (3,5,6,9)
     self.MotorPinSpeed.period_us(700);
     self.MotorPinSpeed.enable(true);
-    self.mcu = mcuStream;
+    self.mcuCommands = mcuCommands;
+    self.mcuMessages = mcuMessages;
     self.positionDelta = 10;  //How many counter positions is close enough?
     self.counter = 0;
     self.max = 0;
     self.target = -1;    //What counter position to goto
-    self.mcu.write("M"); //Ask the MCU to get the maximum value
+    self.mcuCommands.write("M"); //Ask the MCU to get the maximum value
 
-    self.mcu.on('data', function(data) {
+    self.mcuMessages.on('data', function(data) {
     switch (data.substring(0,1)) {
         case "C": {
             self.counter = data.substring(1);
@@ -26,7 +27,7 @@ var mraa = require('mraa');
                 self.Stop();
                 self.target = -1;  
             }
-            setTimeout(function() {self.mcu.write("C") },10);
+            setTimeout(function() {self.mcuCommands.write("C") },10);
             break;
         }
         case "M": {
@@ -38,8 +39,8 @@ var mraa = require('mraa');
     }
     });
 
-    self.mcu.on('error', function(error) {  
-        console.log('Motor MCU error occurred %s', error);
+    self.mcuMessageson('error', function(error) {  
+        console.log('Furby Motor MCU error occurred %s', error);
     });
 
     self.Reset = function() {
@@ -47,23 +48,22 @@ var mraa = require('mraa');
         var timeForOneRev = 1000;
         self.Forward();
         setTimeout(function() { self.Stop() },timeForOneRev);
-        setTimeout(function() { self.mcu.write("C") },timeForOneRev);
+        setTimeout(function() { self.mcuCommands.write("C") },timeForOneRev);
     }
 
     self.Forward = function() {
-        self.mcu.write("U");
+        self.mcuCommands.write("U");
         self.MotorPin1.write(1);
         self.MotorPin2.write(0);
     }
 
     self.Reverse = function() {
-        self.mcu.write("D");
+        self.mcuCommands.write("D");
         self.MotorPin1.write(0);
         self.MotorPin2.write(1);
     }
 
     self.Stop = function() {
-        self.mcu.write("S");
         self.target=-1;
         self.MotorPin1.write(0);
         self.MotorPin2.write(0);
