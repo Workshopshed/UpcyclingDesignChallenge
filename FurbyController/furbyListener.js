@@ -20,7 +20,8 @@ var client = mqtt.connect('mqtts://eddie.local', options);
 
 client.on('connect', function () {
     console.log('Connected');
-    client.subscribe('E14_UCDC/+/Events')
+    client.subscribe('E14_UCDC/+/Events');
+    controller.run(); //Start processing queued actions imediately
 })
 
 client.on('error', function (errMess) {
@@ -33,7 +34,7 @@ client.on('close', function () {
 
 client.on('message', function (topic, message) {
     var command = JSON.parse(message.toString());
-    controller.doMovement(command);
+    controller.queueMovement(command);
     console.log(message.toString());
 })
 

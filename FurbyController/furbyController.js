@@ -1,5 +1,6 @@
 var queue = require('queue');
 var motor = require('./motorFurby.js');
+var soundplayer = require("sound-player");
 
 //todo: Add sound into this too
 
@@ -9,7 +10,7 @@ var controller = function() {
   this.q.concurrency = 1;
 
   //Expect a movement object formed of a command and timer to be passed { action: action, timeOut: timeout}
-  this.doMovement = function(move) {
+  this.queueMovement = function(move) {
 
      var c = this;
 
