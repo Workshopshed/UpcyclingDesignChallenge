@@ -1,6 +1,7 @@
 var queue = require('queue');
 var motor = require('./motorFurby.js');
 var soundplayer = require("./sound-player");
+var fs = require('fs');
 
 var controller = function() {
 
@@ -88,7 +89,10 @@ ears up, eyes open, mouth open, not tilted
         if (this.playing) {
         var self = this;
         this.motor.goto(15);
-        setTimeout(function() { self.motor.goto(185);
+        console.log("Goto15");
+        setTimeout(function() {
+            self.motor.goto(185);
+            console.log("Goto185");
             setTimeout(function() { self.speak();
                 },500 );
             },500 );
