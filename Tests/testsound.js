@@ -1,5 +1,5 @@
-// With full options 
-var soundplayer = require("sound-player");
+//ï¿½Withï¿½fullï¿½optionsï¿½
+var soundplayer = require("./sound-player");
 var options = {
     filename: "LetsGo.wav",
     player: "aplay",

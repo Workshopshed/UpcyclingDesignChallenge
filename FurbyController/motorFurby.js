@@ -22,9 +22,9 @@ var mraa = require('mraa');
     switch (data.substring(0,1)) {
         case "C": {
             self.counter = data.substring(1);
-            if (self.InPosition()) {
+            if (self.inPosition()) {
                 console.log("Position found at %d", self.counter);
-                self.Stop();
+                self.stop();
                 self.target = -1;  
             }
             setTimeout(function() {self.mcuCommands.write("C") },10);
@@ -43,48 +43,48 @@ var mraa = require('mraa');
         console.log('Furby Motor MCU error occurred %s', error);
     });
 
-    self.Reset = function() {
+    self.reset = function() {
         //Set the motor running for long enough to trigger a reset then stop
         var timeForOneRev = 1000;
-        self.Forward();
-        setTimeout(function() { self.Stop() },timeForOneRev);
+        self.forward();
+        setTimeout(function() { self.stop() },timeForOneRev);
         setTimeout(function() { self.mcuCommands.write("C") },timeForOneRev);
     }
 
-    self.Forward = function() {
+    self.forward = function() {
         self.mcuCommands.write("U");
         self.MotorPin1.write(1);
         self.MotorPin2.write(0);
     }
 
-    self.Reverse = function() {
+    self.reverse = function() {
         self.mcuCommands.write("D");
         self.MotorPin1.write(0);
         self.MotorPin2.write(1);
     }
 
-    self.Stop = function() {
+    self.stop = function() {
         self.target=-1;
         self.MotorPin1.write(0);
         self.MotorPin2.write(0);
     }
 
-    self.Speed = function(percent) {
+    self.speed = function(percent) {
         self.MotorPinSpeed.write(percent);
     }
 
-    self.Position = function() {
+    self.position = function() {
         return self.counter;
     }
 
-    self.Max = function() {
+    self.max = function() {
         return self.max;
     }
 
-    self.Distance = function(newPosition) {
+    self.distance = function(newPosition) {
         //What is the distance from the current position to the new position
-        var p = self.Position();
-        var m = self.Max();
+        var p = self.position();
+        var m = self.max();
         var D1 = newPosition - p;
         var D2 = (m - p) + newPosition;
         if (Math.abs(D1) < Math.abs(D2))
@@ -93,26 +93,26 @@ var mraa = require('mraa');
             return D2;
     }
 
-      self.Direction = function(newPosition) {
-            return Math.sign(self.Distance(newPosition))
+      self.direction = function(newPosition) {
+            return Math.sign(self.distance(newPosition))
       }
 
-      self.InPosition = function() {
+      self.inPosition = function() {
           if (self.target == -1) return false; //Not going to a position
-          return ((self.Distance() * self.Direction()) < self.positionDelta);
+          return ((self.distance() * self.direction()) < self.positionDelta);
       }
 
-      self.Goto = function(newPosition) {
+      self.goto = function(newPosition) {
             self.target = newPosition;
-            if (self.InPosition()) {
+            if (self.inPosition()) {
                 self.target=-1;
                 return;
             }
-            if (self.Direction(newPosition) > 0) {
-                self.Forward();
+            if (self.direction(newPosition) > 0) {
+                self.forward();
             }
             else {
-                self.Reverse();
+                self.reverse();
             }
       }
 };
