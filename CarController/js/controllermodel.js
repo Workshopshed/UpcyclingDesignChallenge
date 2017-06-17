@@ -41,11 +41,11 @@ function upCycleController() {
       self.client.send(message);
   }
   self.up = function () {
-      message = this.newMessage("UP",1000);
+      message = this.newMessage("FORWARD",1000);
       self.client.send(message);
   }
   self.down = function () {
-      message = this.newMessage("DOWN",1000);
+      message = this.newMessage("REVERSE",1000);
       self.client.send(message);
   }
 
