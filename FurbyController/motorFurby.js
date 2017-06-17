@@ -18,7 +18,8 @@ var mraa = require('mraa');
     self.target = -1;    //What counter position to goto
     self.mcuCommands.write("M"); //Ask the MCU to get the maximum value
 
-    self.mcuMessages.on('data', function(data) {
+    self.mcuMessages.on('data', function(message) {
+    var data = message.toString();
     switch (data.substring(0,1)) {
         case "C": {
             self.counter = data.substring(1);
@@ -39,7 +40,7 @@ var mraa = require('mraa');
     }
     });
 
-    self.mcuMessageson('error', function(error) {  
+    self.mcuMessages.on('error', function(error) {  
         console.log('Furby Motor MCU error occurred %s', error);
     });
 
