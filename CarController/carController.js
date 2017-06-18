@@ -2,14 +2,14 @@ var queue        = require('queue');
 var util         = require("util");
 var mraa = require('mraa');
 var EventEmitter = require("events").EventEmitter;
-var bump = require('./bumper.js');
+var bumper = require('./bumper.js');
 var motors = require('./motorCar.js');
 
 var controller = function() {
 
   this.q = queue();
   this.q.concurrency = 1;
-  this.bumpers = bump();
+  this.bumpers = new bumper();
   //todo: Integrate motors
 
   //Expect a movement object formed of a command and timer to be passed { action: action, timeOut: timeout}
@@ -18,12 +18,12 @@ var controller = function() {
      var c = this;
 
      if (move.action == "RUN") {
-        this.run();
+        c.run();
         return;
      }
 
      if (move.action == "HALT") {
-        this.halt();
+        c.halt();
         return;
      }
 
@@ -64,7 +64,7 @@ var controller = function() {
    this.bumpers.on('bumper', function(bump) {   
        console.log("Bump");
        //todo: Stop motors
-       this.emit('bumper',bump);
+       this.emit('action',bump);
    });
 
     this.shutdown = function() {
