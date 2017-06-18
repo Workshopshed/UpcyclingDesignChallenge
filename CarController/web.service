@@ -1,0 +1,15 @@
+[Unit]
+Description=Web Service
+After=xdk-daemon.service
+Requires=xdk-daemon.service
+
+[Service]
+TimeoutStartSec=1
+ExecStart=/usr/bin/node /home/root/webServer.js
+Environment="NODE_PATH=/usr/lib/node_modules/"
+Environment="NODE_ENV=production"
+Environment="AVAHI_COMPAT_NOWARN=1"
+Environment="HOME=/home/root"
+
+[Install]
+WantedBy=multi-user.target

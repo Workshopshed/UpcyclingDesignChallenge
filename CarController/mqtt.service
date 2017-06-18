@@ -1,0 +1,15 @@
+[Unit]
+Description=MQTT Service
+After=xdk-daemon.service
+Requires=xdk-daemon.service
+
+[Service]
+TimeoutStartSec=1
+ExecStart=/home/root/node_modules/mosca/bin/mosca -v --https-port 1884 --only-http --cert TestCertificate.pem --key TestCertificate.pem  
+Environment="NODE_PATH=/usr/lib/node_modules/"
+Environment="NODE_ENV=production"
+Environment="AVAHI_COMPAT_NOWARN=1"
+Environment="HOME=/home/root"
+
+[Install]
+WantedBy=multi-user.target
