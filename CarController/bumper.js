@@ -3,7 +3,7 @@ var mraa = require('mraa');
 var EventEmitter = require("events").EventEmitter;
 
 var bumper = function() {
-
+   var self = this;
    var bumpfPrevious = -1;
    var bumpbPrevious = -1;
    var bumpfPin = new mraa.Aio(0); //setup access analog input pin 0 (Front bumper)
@@ -11,20 +11,26 @@ var bumper = function() {
 
    //Monitor the bumper analogue pin and raise events if it changes
    setInterval(function () {
-      var analogValueFloat = bumpfPin.readFloat();
-      var newval = floatToSwitch(analogValueFloat)
-      if (newval != bumpfPrevious) {
-          this.emit('bumper','bumperf' + newval.toString());
-          bumpfPrevious  = newval;
+      var analogValueFloatF = bumpfPin.readFloat();
+      var newvalF = floatToSwitch(analogValueFloatF);
+      if (bumpfPrevious == -1) {
+          bumpfPrevious  = newvalF;
+      }      
+      if (newvalF != bumpfPrevious) {
+          self.emit('bumper','bumperf' + newvalF.toString());
+          bumpfPrevious  = newvalF;
       }
    } , 100);
 
    setInterval(function () {
-      var analogValueFloat = bumpbPin.readFloat();
-      var newval = floatToSwitch(analogValueFloat)
-      if (newval != bumpbPrevious) {
-          this.emit('bumper','bumperb' + newval.toString());
-          bumpbPrevious  = newval;
+      var analogValueFloatB = bumpbPin.readFloat();
+      var newvalB = floatToSwitch(analogValueFloatB);
+      if (bumpbPrevious == -1) {
+          bumpbPrevious  = newvalB;
+      }
+      if (newvalB != bumpbPrevious) {
+          self.emit('bumper','bumperb' + newvalB.toString());
+          bumpbPrevious  = newvalB;
       }
    } , 100);
 
@@ -53,4 +59,4 @@ var bumper = function() {
 1
 util.inherits(bumper, EventEmitter);
 
-module.exports = new bumper();
+module.exports = bumper;
