@@ -1,1 +1,1 @@
-mosca --v --https-port 1884 --only-http --cert TestCertificate.pem --key TestCertificate.pem
+mosca --v --https-port 1884 --only-http --cert Eddie.pem --key Eddie.pem
