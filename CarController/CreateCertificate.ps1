@@ -1,1 +1,1 @@
-﻿New-SelfSignedCertificate -DnsName "workshopshed.com", "www.workshopshed.com" -KeyFriendlyName "Workshopshed"
+﻿New-SelfSignedCertificate -DnsName "Eddie.local", "Eddie.lan" -KeyFriendlyName "Eddie"
