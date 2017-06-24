@@ -61,3 +61,6 @@ Upcycling.xdke
 CarController/TestCertificate.pem
 xdk/project-info.json
 3DModels/EdisonMockups.json
+CarController/Eddie.cer
+CarController/Eddie.pfx
+CarController/Eddie.pem

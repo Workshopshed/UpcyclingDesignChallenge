@@ -4,7 +4,7 @@ function upCycleController() {
     self = this;
     self.clientID = ko.observable("upCycleController" + parseInt(Math.random() * 100, 10));
     self.log = ko.observableArray();
-    self.server = '192.168.1.145';
+    self.server = 'Eddie.lan';
     self.port = 1884;
     self.status = { name: ko.observable(self.clientID), status: ko.observable("ready") };
     self.Qcommands = "E14_UCDC/" + self.clientID() + "/Commands";
@@ -23,6 +23,7 @@ function upCycleController() {
        console.log(errorCode);
       console.log(errorMessage);
       console.log(invocationContext);
+      self.log.push(errorMessage);
 
   }
 
